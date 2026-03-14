@@ -60,137 +60,24 @@
 
 <section id="contact" class="contact">
   <h2>Contact Us</h2>
-  <p>WhatsApp: +91XXXXXXXXXX</p>
+  <p>WhatsApp: +919863653392</p>
 </section>
 
 <script src="script.js"></script>
 </body>
 </html>
-
-
-<!-- FILE: style.css -->
 body{
 font-family:Arial;
-margin:0;
 background:#fafafa;
 }
 
 header{
-display:flex;
-justify-content:space-between;
+background:black;
+color:white;
 padding:15px;
-background:black;
-color:white;
 }
-
-nav a{
-margin-right:15px;
-color:white;
-text-decoration:none;
-}
-
-.hero{
-text-align:center;
-padding:60px;
-background:#f2f2f2;
-}
-
-.products{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-padding:40px;
-}
-
-.product{
-background:white;
-padding:20px;
-text-align:center;
-border-radius:10px;
-box-shadow:0 0 10px rgba(0,0,0,0.1);
-}
-
-.product img{
-width:100%;
-border-radius:8px;
-}
-
-button{
-padding:10px 15px;
-border:none;
-background:black;
-color:white;
-cursor:pointer;
-margin-top:10px;
-}
-
-.cart{
-position:fixed;
-right:-400px;
-top:0;
-width:300px;
-height:100%;
-background:white;
-padding:20px;
-box-shadow:-3px 0 10px rgba(0,0,0,0.2);
-transition:0.3s;
-overflow:auto;
-}
-
-.cart.open{
-right:0;
-}
-
-.contact{
-padding:40px;
-text-align:center;
-background:#eee;
+function addToCart(){
+alert("Item added to cart")
 }
 
 
-<!-- FILE: script.js -->
-let cart=[]
-
-function addToCart(name,price){
-cart.push({name,price})
-updateCart()
-}
-
-function updateCart(){
-const list=document.getElementById("cart-items")
-const total=document.getElementById("cart-total")
-const count=document.getElementById("cart-count")
-
-list.innerHTML=""
-
-let sum=0
-
-cart.forEach(item=>{
-const li=document.createElement("li")
-li.textContent=item.name+" - ₹"+item.price
-list.appendChild(li)
-
-sum+=item.price
-})
-
-count.textContent=cart.length
-
-total.textContent=sum
-
-const message=encodeURIComponent(
-"Hello, I want to order:\n"+
-cart.map(i=>i.name+" ₹"+i.price).join("\n")+
-"\nTotal: ₹"+sum
-)
-
-document.getElementById("whatsapp-order").href=
-"https://wa.me/91XXXXXXXXXX?text="+message
-}
-
-function openCart(){
-document.getElementById("cart").classList.add("open")
-}
-
-function closeCart(){
-document.getElementById("cart").classList.remove("open")
-}
